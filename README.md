@@ -1,4 +1,7 @@
 # Cotton_Disease_Prediction
+```
+bash
+```
 ```bash
 	 loss       accuracy	val_loss	val_accuracy
 0	2.885419	0.739108	0.123106	0.944444
