@@ -3,7 +3,12 @@
 Cotton is known as ‘white gold’ in the agricultural industry. Agriculture is the primary source of economic income in Bangladesh and the country's economy is heavily dependent on agriculture. The soil and water resources of our country are fertile and the climate is moderate. But numerous diseases affect crop production and cause enormous crop losses, endangering the lives of helpless farmers. A previous report showed that about 70–80% of cotton diseases were leaf diseases and 30–20% were pest diseases. Experts typically use bare eyes to find and identify such plant diseases and pests which may result from lower accuracy of the identification. As a result, early detection of cotton disease using AI-based systems may help to increase the production of cotton by detecting the leaf disease significantly. In this research, we proposed a DL-based cotton leaf disease detection approach using fine-tuning Transfer Learning (TL) algorithms by tuning the layers and parameters of the existing TL algorithms. We also investigated the performance of several fine-tuning TL model such as  Inception-V3  on the publicly available cotton dataset for cotton disease prediction. The investigations found that the Inception-V3 model provides the highest accuracy rate of 95% and was selected to develop a web-based smart application for real-life cotton disease prediction in farming to increase cotton production. Hence, our model can accurately diagnose cotton leaf diseases and will provide a new window for the automatic leaf disease diagnosis of other plants.
 
 - Data link : [Data link](https://drive.google.com/drive/folders/1SfCipusCMqVd9a-0RLfBt_9JjCoIlfPi?usp=drive_link)
-
+- ### Demo :
+<img
+  src="demo\Screenshot (55).png"
+  alt="Alt text"
+  title="Cotton Disease title"
+  style="display: inline-block; margin: 0 auto; max-width: 1000px">
 ## Workflow
 
 1. update config.yaml
