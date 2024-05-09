@@ -7,20 +7,30 @@ class CottonDisease:
     def __init__(self,filename):
         self.filename =filename
 
-    def predictionCottonDisease(self):
-        # load model
-        model = load_model(os.path.join("artifacts","training", "model.h5"))
+    def model_predict(img_path, model):
+        model = load_model(os.path.join("artifacts","training", "inceptionV3.h5"))
+        print(img_path)
+        img = image.load_img(img_path, target_size=(224, 224))
 
-        imagename = self.filename
-        test_image = image.load_img(imagename, target_size = (224,224))
-        test_image = image.img_to_array(test_image)
-        test_image = np.expand_dims(test_image, axis = 0)
-        result = np.argmax(model.predict(test_image), axis=1)
-        print(result)
+        # Preprocessing the image
+        x = image.img_to_array(img)
+        # x = np.true_divide(x, 255)
+        ## Scaling
+        x=x/255
+        x = np.expand_dims(x, axis=0)
+    
 
-        if result[0] == 0:
-            prediction = 'diseased cotton leaf'
-            return [{ "image" : prediction}]
+        # Be careful how your trained model deals with the input
+        # otherwise, it won't make correct prediction!
+    # x = preprocess_input(x)
+
+        preds = model.predict(x)
+        preds=np.argmax(preds, axis=1)
+        if preds==0:
+            preds="The leaf is diseased cotton leaf"
+        elif preds==1:
+            preds="The leaf is diseased cotton plant"
+        elif preds==2:
+            preds="The leaf is fresh cotton leaf"
         else:
-            prediction = 'cat'
-            return [{ "image" : prediction}]
+            preds="The leaf is fresh cotton plant"

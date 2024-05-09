@@ -25,8 +25,9 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
 
 # Flask utils
-from flask import Flask, redirect, url_for, request, render_template
+from flask import Flask, redirect, url_for, request, render_template , jsonify
 from werkzeug.utils import secure_filename
+from flask_cors import CORS, cross_origin
 #from gevent.pywsgi import WSGIServer
 
 # Define a flask app
@@ -42,6 +43,7 @@ model = load_model(MODEL_PATH)
 
 
 def model_predict(img_path, model):
+    
     print(img_path)
     img = image.load_img(img_path, target_size=(224, 224))
 
@@ -72,14 +74,21 @@ def model_predict(img_path, model):
     
     return preds
 
-
 @app.route('/', methods=['GET'])
+@cross_origin()
 def index():
     # Main page
     return render_template('index.html')
 
+@app.route("/train", methods=['GET','POST'])
+@cross_origin()
+def trainRoute():
+    os.system("python main.py")
+    return "Training done successfully!"
+
 
 @app.route('/predict', methods=['GET', 'POST'])
+@cross_origin()
 def upload():
     if request.method == 'POST':
         # Get the file from post request
